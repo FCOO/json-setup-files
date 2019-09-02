@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="da" style="font-size: 100%">
+<head>
+	<title>fcoo.dk - json-setup-files - Demo</title>
+	<meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta http-equiv='x-dns-prefetch-control' content='on'>
+	<meta name='copyright' content='FCOO'>
+	<meta name='owner' content='FCOO'>
+</head>
+
+<body>
+    See console!
+	<script src="bower_components.js"></script>
+	<script src="../src/json-setup-files.js"></script>
+	<script>
+        Promise.defaultErrorHandler = function( reason, url ){
+            console.log('ERROR', reason, url );
+        };
+
+        Promise.getJSON('data/setup.json',{}, function(json){
+                console.log('data/setup.json =', json );
+            }
+        );
+        window.loadJsonSetupFile( 'data/setup.json',
+            function( json) {
+                console.log('loadJsonSetupFile(data/setup.json) => ', json );
+            },
+            function( error ){
+                console.log('error:', error );
+            },
+        );
+	</script>
+</body>
+</html>
