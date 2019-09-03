@@ -74,7 +74,7 @@ There are two way (#1 and #2) to make reference to data in another file:
     /**************************************************
     visitAll( json, function(id, data, type, parent), onlyType, onlyFirstLevel
     type = 'string', 'simple', 'object', 'array'
-    onlyTyoe = string of type. Ex "string object"
+    onlyType = string of type. Ex "string object"
 
     **************************************************/
     function visitAll( json, func, onlyType, onlyFirstLevel ){
@@ -86,10 +86,11 @@ There are two way (#1 and #2) to make reference to data in another file:
 
         $.each( json, function( id, data ){
             var dataType = $.type(data);
-            if (allowType(dataType))
-                func( id, data, dataType, json );
             if (!onlyFirstLevel && ((dataType == "object") || (dataType == "array")) )
                 visitAll(data, func, onlyType);
+            if (allowType(dataType))
+                func( id, data, dataType, json );
+
         });
     }
 
@@ -173,7 +174,6 @@ There are two way (#1 and #2) to make reference to data in another file:
                 delete parent[id].default;
             }
         });
-
 
         //Remove alias and default and alias-values
         replaceIdList.push('alias');

@@ -1,5 +1,16 @@
 {
     "default": {
+        "base": {
+            "rec1": "FROM BASE",
+            "rec2": "FROM BASE"
+        },
+
+        "base_extended": {
+            "default": "default.base",
+            "rec2": "FROM BASE_EXTENDED",
+            "rec3": "FROM BASE_EXTENDED"
+        },
+
         "protocol": "https://",
         "app-fcoo": "app.fcoo",
         "path": ["default.protocol", "default.app-fcoo"],
@@ -33,5 +44,10 @@
         "test1_id": "id-1-3",
         "test1_direkte": "test1.id-1-3",
         "findesIkke_id": "Denne her tilføjer ikke noget"
+    },
+    "record3": {
+        "default": "default.base_extended",
+        "rec3": "INDIVIDUEL",
+        "rec4": "INDIVIDUEL"
     }
 }
